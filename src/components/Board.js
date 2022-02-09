@@ -1,6 +1,23 @@
 import Square from "./Square";
 
 export default function Board(props) {
+  let row1 = [];
+  let row2 = [];
+  let row3 = [];
+  for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
+    for (let index = 0; index < 3; index++) {
+      let squareIndex = index + rowIndex * 3;
+
+      if(squareIndex < 3){
+        row1.push(<Square value={props.squares[squareIndex]} onClick={() => { props.onClick(squareIndex); }} />);
+      }else if (squareIndex < 6){
+        row2.push(<Square value={props.squares[squareIndex]} onClick={() => { props.onClick(squareIndex); }} />);
+      }else{
+        row3.push(<Square value={props.squares[squareIndex]} onClick={() => { props.onClick(squareIndex); }} />);
+      }
+    }
+  }
+
   return (
     <div className="board">
       <div>
